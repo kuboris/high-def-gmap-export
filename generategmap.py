@@ -18,7 +18,7 @@ def generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,forma
         tilesize_height=size_tile_y*scale
         width_final=map_tile_width*tilesize_width
         ##Special usecase add another line of tiles at the end for better world map editing
-        width_final=map_tile_width*(tilesize_width+1)
+        #width_final=map_tile_width*(tilesize_width+1)
         height_final=map_tile_height*(tilesize_height-50*scale)
         map_img = Image.new('RGB', (width_final,height_final))
         #Get coordinates of starting pixels
@@ -41,8 +41,8 @@ def generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,forma
                 #files.download("high_resolution_image"+f'{x:02}'+"-"+f'{y:02}'+".png")
                 map_img.paste(im, (x*tilesize_width, (map_tile_height-1-y)*(tilesize_height-50*scale)))
                 ### Special usecase -  add another line of tiles at the end for better world map editing
-                if y==1:
-                       map_img.paste(im, (map_tile_width*x*tilesize_width, (map_tile_height-1-y)*(tilesize_height-100)))
+                #if y==1:
+                #       map_img.paste(im, (map_tile_width*x*tilesize_width, (map_tile_height-1-y)*(tilesize_height-100)))
               
                 os.remove(current_tile)
         map_img.save("high_resolution_image.png")
