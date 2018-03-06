@@ -90,6 +90,4 @@ style='element:geometry%7Ccolor:0xf5f5f5&style=element:labels%7Cvisibility:off&s
 generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,format_image,maptype,style,size_tile_x,size_tile_y)
 
 from IPython.display import Image
-from google.colab import files
-files.download("high_resolution_image.png")
 #Image(filename='high_resolution_image.png')
