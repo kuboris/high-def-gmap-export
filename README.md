@@ -69,17 +69,19 @@ Requirements Python 3 + Image.
 
 1.  Import dependencies
 
-    #!/usr/bin/python
+```
+#!/usr/bin/python
     import urllib.request
     from PIL import Image
     import os
     import math
+ ```
 
 2. Google uses tile system for showing Google maps.(*Tiles are 256x256*)We can
 specify how wide and tall our static map is in pixels. However we need to
 provide latitude and longitude instead of pixels. That’s why we create two
 functions that can transform gps coordinates to pixel coordinates.
-
+```
     #Google uses this tile size
     #based on 
     tileSize = 256
@@ -106,12 +108,13 @@ functions that can transform gps coordinates to pixel coordinates.
         lat = (my / originShift) * 180.0
         lat = 180 / math.pi * (2 * math.atan(math.exp(lat * math.pi / 180.0)) - math.pi / 2.0)
         return lat, lon
+```
 
 We need to specify function for cycling through all the coordinates, download
 image and stitch it to one high res image.
-
+```
     generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,format_image,maptype,style,size_tile_x,size_tile_y)
-
+```
 Code is too long to paste here but the short explanation of arguments you need
 to generate map.
 
@@ -138,7 +141,7 @@ map.
 
 Example of running script. This will generate high_def simple world map with
 resolution around 12000 px wide.
-
+```
     from PIL import Image
     lat,lng=-80.05112877980659, -180.0
     # World size tiles for zoom 5, 512x512 are 17x15
@@ -154,7 +157,7 @@ resolution around 12000 px wide.
     #simplified style
     style='element:geometry%7Ccolor:0xf5f5f5'
     generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,format_image,maptype,style,size_tile_x,size_tile_y)
-
+```
 By increasing zoom you get higher resolution maps. This is the cropped result.
 
 ![](https://cdn-images-1.medium.com/max/800/1*DIgURDRDmn3EXR2SIp3jPQ.png)
