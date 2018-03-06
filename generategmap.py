@@ -41,8 +41,9 @@ def generateImage(lat,lng,map_tile_width,map_tile_height,zoom,scale,apikey,forma
                 #files.download("high_resolution_image"+f'{x:02}'+"-"+f'{y:02}'+".png")
                 map_img.paste(im, (x*tilesize_width, (map_tile_height-1-y)*(tilesize_height-50*scale)))
                 ### Special usecase -  add another line of tiles at the end for better world map editing
-                #if y==1:
-                #       map_img.paste(im, (map_tile_width*x*tilesize_width, (map_tile_height-1-y)*(tilesize_height-100)))
+                #if x==1:
+                #       print('pasting_side')
+                #       map_img.paste(im, ((x-1+map_tile_width)*tilesize_width, (map_tile_height-1-y)*(tilesize_height-50*scale)))
               
                 os.remove(current_tile)
         map_img.save("high_resolution_image.png")
